@@ -1,23 +1,24 @@
-ï»¿/*
-* åç§°: ç™»å½•ç³»ç»Ÿï¼ˆC++å­¦ä¹ è®°å½•ï¼‰
-* 
-* å®ç°åŠŸèƒ½:
-* 1ã€æœ‰ç™»å½•å’Œæ³¨å†ŒåŠŸèƒ½ï¼Œç™»å½•æ—¶å¯ä»¥åˆ¤æ–­è´¦å·æ˜¯å¦å­˜åœ¨ï¼Œå¯†ç æ˜¯å¦æ­£ç¡®
-* 2ã€è´¦å·å’Œå¯†ç å­˜å‚¨åœ¨excelè¡¨æ ¼å†…ï¼Œæ³¨å†Œæ—¶å°†ä¼šæ–°å¢æ¡ç›®è¿›å»(ç”±äºä½¿ç”¨äº†licxlåº“,éœ€è¦åœ¨ç¨‹åºè¿è¡Œç›®å½•ä¸‹å¤åˆ¶libxl.dll)
-* 3ã€æ¯æ¬¡è¿è¡Œéƒ½ä¼šè®°å½•txtæ ¼å¼çš„æ—¥å¿—(ä½†æ˜¯éœ€è¦è‡ªè¡Œåœ¨ç¨‹åºç›®å½•ä¸‹æ–°å»ºlog.txt)
-* 
-* å…¶ä»–:
-*   ç¬¬ä¸€æ¬¡ç”¨é¢å‘å¯¹è±¡çš„æ€æƒ³å»å†™ä¸€ä¸ªå°å°å°é¡¹ç›®ï¼Œé—®é¢˜è›®å¤šçš„ï¼Œä¸ä»…ä»£ç çš„é€»è¾‘æœ‰äº›æ··ä¹±ï¼Œæœ‰çš„åœ°æ–¹è¡¨æ„ä¹Ÿå¾ˆæ¨¡ç³Š
-* ä½†æ˜¯ä¹Ÿæ˜¯ç¬¬ä¸€æ¬¡ä½¿ç”¨ç¬¬ä¸‰æ–¹åº“ï¼Œå†™å‡ºèƒ½å¤Ÿè®°å½•è¿è¡ŒçŠ¶æ€çš„ç¨‹åºï¼Œç›¸å½“äºæˆ‘çš„ç¨‹åºå¤šäº†æ—¶é—´è½´è¿™ä¸€ä¸ªç»´åº¦ã€‚
-* æˆ‘è§‰å¾—è¿™ä¸€ç‚¹æ˜¯æ„ä¹‰é‡å¤§çš„ã€‚
+/*
+* Ãû³Æ: µÇÂ¼ÏµÍ³£¨C++Ñ§Ï°¼ÇÂ¼£©
+*
+* ÊµÏÖ¹¦ÄÜ:
+* 1¡¢ÓĞµÇÂ¼ºÍ×¢²á¹¦ÄÜ£¬µÇÂ¼Ê±¿ÉÒÔÅĞ¶ÏÕËºÅÊÇ·ñ´æÔÚ£¬ÃÜÂëÊÇ·ñÕıÈ·
+* 2¡¢ÕËºÅºÍÃÜÂë´æ´¢ÔÚexcel±í¸ñÄÚ£¬×¢²áÊ±½«»áĞÂÔöÌõÄ¿½øÈ¥(ÓÉÓÚÊ¹ÓÃÁËlicxl¿â,ĞèÒªÔÚ³ÌĞòÔËĞĞÄ¿Â¼ÏÂ¸´ÖÆlibxl.dll)
+* 3¡¢Ã¿´ÎÔËĞĞ¶¼»á¼ÇÂ¼txt¸ñÊ½µÄÈÕÖ¾(µ«ÊÇĞèÒª×ÔĞĞÔÚ³ÌĞòÄ¿Â¼ÏÂĞÂ½¨log.txt)
+*
+* ÆäËû:
+*   µÚÒ»´ÎÓÃÃæÏò¶ÔÏóµÄË¼ÏëÈ¥Ğ´Ò»¸öĞ¡Ğ¡Ğ¡ÏîÄ¿£¬ÎÊÌâÂù¶àµÄ£¬²»½ö´úÂëµÄÂß¼­ÓĞĞ©»ìÂÒ£¬ÓĞµÄµØ·½±íÒâÒ²ºÜÄ£ºı
+* µ«ÊÇÒ²ÊÇµÚÒ»´ÎÊ¹ÓÃµÚÈı·½¿â£¬Ğ´³öÄÜ¹»¼ÇÂ¼ÔËĞĞ×´Ì¬µÄ³ÌĞò£¬Ïàµ±ÓÚÎÒµÄ³ÌĞò¶àÁËÊ±¼äÖáÕâÒ»¸öÎ¬¶È¡£
+* ÎÒ¾õµÃÕâÒ»µãÊÇÒâÒåÖØ´óµÄ¡£
 */
+
 
 #include <iostream>
 #include "libxl.h"
 #include <fstream>
 #include <ctime>
 
-//ç™»å½•çŠ¶æ€æšä¸¾
+//µÇÂ¼×´Ì¬Ã¶¾Ù
 enum class login_state_type
 {
     NOT_LOGIN_IN = 0,
@@ -26,15 +27,15 @@ enum class login_state_type
     RECOVER_PSWD
 };
 
-//ç™»å½•ç•Œé¢ç±»,å­˜å‚¨ç™»å½•çŠ¶æ€,è¾“å…¥çš„è´¦å·å’Œå¯†ç ; ç™»å½•æ–¹æ³•ã€æ³¨å†Œæ–¹æ³•ã€æ¬¢è¿ç•Œé¢
-class Login 
+//µÇÂ¼½çÃæÀà,´æ´¢µÇÂ¼×´Ì¬,ÊäÈëµÄÕËºÅºÍÃÜÂë; µÇÂ¼·½·¨¡¢×¢²á·½·¨¡¢»¶Ó­½çÃæ
+class Login
 {
 public:
     Login(void);
     ~Login(void);
 
     int start(void);
-    bool login_in(std::wstring name,std::wstring pswd);
+    bool login_in(std::wstring name, std::wstring pswd);
     bool regist(std::wstring name, std::wstring pswd);
 
     bool login_flag;
@@ -64,7 +65,7 @@ int main()
 
     Login user;
     int flag = 0;
-    std::wstring name,pswd,temp;
+    std::wstring name, pswd, temp;
 
     while (1)
     {
@@ -73,21 +74,21 @@ int main()
         switch (flag)
         {
         case 1:
-            std::cout << "è´¦å·:";
+            std::cout << "ÕËºÅ:";
             std::wcin >> name;
-            std::cout << "å¯†ç :";
+            std::cout << "ÃÜÂë:";
             std::wcin >> pswd;
             user.login_in(name, pswd);
             break;
         case 2:
-            std::cout << "è´¦å·:";
+            std::cout << "ÕËºÅ:";
             std::wcin >> name;
-            std::cout << "å¯†ç :";
+            std::cout << "ÃÜÂë:";
             std::wcin >> pswd;
             user.regist(name, pswd);
             break;
         case 3:
-            std::cout << "å†è§!" << std::endl;
+            std::cout << "ÔÙ¼û!" << std::endl;
             return 0;
         default:
             break;
@@ -99,16 +100,16 @@ int main()
 }
 
 Login::Login(void) : login_state(login_state_type::NOT_LOGIN_IN), user_name(L"NULL"), password(L"-1"), first_row(0), first_col(0), last_row(0), last_col(0), p_book(NULL), p_sheet(NULL), login_flag(false), clog(NULL)
-{                                                                                                                                                       
+{
     if (!load_account())
     {
-        std::cout << "é“¾æ¥æœåŠ¡å™¨å¤±è´¥!" << std::endl;
+        std::cout << "Á´½Ó·şÎñÆ÷Ê§°Ü!" << std::endl;
         exit(1);
     }
 
     if (!load_log())
     {
-        std::cout << "WARRING:æ—¥å¿—è®°å½•å™¨å¯åŠ¨å¤±è´¥!" << std::endl;
+        std::cout << "WARRING:ÈÕÖ¾¼ÇÂ¼Æ÷Æô¶¯Ê§°Ü!" << std::endl;
     }
 }
 
@@ -123,36 +124,36 @@ int Login::start(void)
 {
     std::wstring cmd;
 
-    std::cout << "æ¬¢è¿,";
+    std::cout << "»¶Ó­,";
     switch (login_state)
     {
-        case login_state_type::PSWD_ERROR:
-        case login_state_type::RECOVER_PSWD:
-            std::cout << "é”™è¯¯ï¼æœªå®šä¹‰çš„äº‹ä»¶ï¼" << std::endl; 
-            exit(1); 
-            break;
-        case login_state_type::NOT_LOGIN_IN:
-            std::cout << "æ‚¨å°šæœªç™»å½•ï¼Œè¯·ç™»å½•ï¼ˆ1ï¼‰æˆ– æ³¨å†Œï¼ˆ2ï¼‰" << std::endl;
-            cmd_table:
-            std::cout << "å‘½ä»¤: ";
-            std::wcin >> cmd;
-            if (cmd == L"1") return 1;
-            if (cmd == L"2") return 2;
-            std::wcout << L"æŠ±æ­‰,\"" << cmd << L"\"æ˜¯æ— æ³•è¯†åˆ«çš„æŒ‡ä»¤ï¼Œè¯·é‡æ–°è¾“å…¥!" << std::endl;
-            goto cmd_table;
+    case login_state_type::PSWD_ERROR:
+    case login_state_type::RECOVER_PSWD:
+        std::cout << "´íÎó£¡Î´¶¨ÒåµÄÊÂ¼ş£¡" << std::endl;
+        exit(1);
+        break;
+    case login_state_type::NOT_LOGIN_IN:
+        std::cout << "ÄúÉĞÎ´µÇÂ¼£¬ÇëµÇÂ¼£¨1£©»ò ×¢²á£¨2£©" << std::endl;
+    cmd_table:
+        std::cout << "ÃüÁî: ";
+        std::wcin >> cmd;
+        if (cmd == L"1") return 1;
+        if (cmd == L"2") return 2;
+        std::wcout << L"±§Ç¸,\"" << cmd << L"\"ÊÇÎŞ·¨Ê¶±ğµÄÖ¸Áî£¬ÇëÖØĞÂÊäÈë!" << std::endl;
+        goto cmd_table;
 
-            break;
-        case login_state_type::LOGIN_IN:
-            std::wcout << L"å°Šæ•¬çš„ç”¨æˆ·: " << user_name << L",æ‚¨å¥½ï¼" << std::endl;
-            return 3;
-            break;
-        default:
-            break;
-            return 0;
+        break;
+    case login_state_type::LOGIN_IN:
+        std::wcout << L"×ğ¾´µÄÓÃ»§: " << user_name << L",ÄúºÃ£¡" << std::endl;
+        return 3;
+        break;
+    default:
+        break;
+        return 0;
     }
 
 
-    
+
 }
 
 bool Login::login_in(std::wstring name, std::wstring pswd)
@@ -164,33 +165,33 @@ bool Login::login_in(std::wstring name, std::wstring pswd)
     {
         if (this->pswd_checking(name, pswd))
         {
-            std::cout << "ç™»å½•æˆåŠŸ!" << std::endl;
+            std::cout << "µÇÂ¼³É¹¦!" << std::endl;
             login_state = login_state_type::LOGIN_IN;
             login_flag = true;
             time_t now;
             time(&now);
             char buffer[30];
             ctime_s(buffer, 30, &now);
-            *clog << "LOG:" << buffer << "-> " << "ç™»å½•æˆåŠŸ:" << name.c_str() << "\n\n";
+            *clog << "LOG:" << buffer << "-> " << "µÇÂ¼³É¹¦:" << name.c_str() << "\n\n";
             return true;
         }
         else {
-            std::cout << "å¯†ç é”™è¯¯!è¯·é‡æ–°ç™»å½•!" << std::endl;
+            std::cout << "ÃÜÂë´íÎó!ÇëÖØĞÂµÇÂ¼!" << std::endl;
             time_t now;
             time(&now);
             char buffer[30];
             ctime_s(buffer, 30, &now);
-            *clog << "LOG:" << buffer << "-> " << "å¯†ç é”™è¯¯:" << name.c_str() << "\n\n";
+            *clog << "LOG:" << buffer << "-> " << "ÃÜÂë´íÎó:" << name.c_str() << "\n\n";
             return false;
         }
     }
     else {
-        std::cout << "ç”¨æˆ·ä¸å­˜åœ¨!è¯·é‡æ–°ç™»å½•!" << std::endl;
+        std::cout << "ÓÃ»§²»´æÔÚ!ÇëÖØĞÂµÇÂ¼!" << std::endl;
         time_t now;
         time(&now);
         char buffer[30];
         ctime_s(buffer, 30, &now);
-        *clog << "LOG:" << buffer << "-> " << "ç”¨æˆ·ä¸å­˜åœ¨:" << name.c_str() << "\n\n";
+        *clog << "LOG:" << buffer << "-> " << "ÓÃ»§²»´æÔÚ:" << name.c_str() << "\n\n";
         return false;
     }
 }
@@ -201,22 +202,22 @@ bool Login::regist(std::wstring name, std::wstring pswd)
     password = pswd;
 
     if (this->user_is_exist(name)) {
-        std::cout << "ç”¨æˆ·å·²å­˜åœ¨!æ³¨å†Œå¤±è´¥!" << std::endl;
+        std::cout << "ÓÃ»§ÒÑ´æÔÚ!×¢²áÊ§°Ü!" << std::endl;
         return false;
     }
     else {
         if (add_account(name, pswd))
         {
-            std::cout << "æ³¨å†ŒæˆåŠŸ!" << std::endl;
+            std::cout << "×¢²á³É¹¦!" << std::endl;
             time_t now;
             time(&now);
             char buffer[30];
             ctime_s(buffer, 30, &now);
-            *clog << "LOG:" << buffer << "-> " << "æ³¨å†ŒæˆåŠŸ:" << name.c_str() << "\n\n";
+            *clog << "LOG:" << buffer << "-> " << "×¢²á³É¹¦:" << name.c_str() << "\n\n";
             return true;
         }
         else {
-            std::cout << "æ³¨å†Œå¤±è´¥!è¯·å†æ¬¡å°è¯•!" << std::endl;
+            std::cout << "×¢²áÊ§°Ü!ÇëÔÙ´Î³¢ÊÔ!" << std::endl;
             return false;
         }
 
@@ -230,7 +231,7 @@ bool Login::user_is_exist(std::wstring name)
     {
         if (p_sheet->cellType(i, first_col) == libxl::CELLTYPE_STRING)
         {
-            if ( 0 == name.compare(p_sheet->readStr(i, first_col)) )
+            if (0 == name.compare(p_sheet->readStr(i, first_col)))
                 return true;
         }
     }
@@ -245,18 +246,18 @@ bool Login::pswd_checking(std::wstring name, std::wstring pswd)
     {
         if (p_sheet->cellType(i, first_col) == libxl::CELLTYPE_STRING)
         {
-            if ( 0 == name.compare(p_sheet->readStr(i, first_col)))
+            if (0 == name.compare(p_sheet->readStr(i, first_col)))
             {
                 goto pswd_check;
             }
         }
     }
 
-    pswd_check:
+pswd_check:
 
     if (p_sheet->cellType(i, last_col) == libxl::CELLTYPE_STRING)
     {
-        if ( 0 == pswd.compare(p_sheet->readStr(i, last_col)))
+        if (0 == pswd.compare(p_sheet->readStr(i, last_col)))
         {
             return true;
         }
@@ -281,17 +282,17 @@ bool Login::add_account(std::wstring name, std::wstring pswd)
 
 bool Login::load_account(void)
 {
-    libxl::Book* account_book = xlCreateBook();  //åˆ›å»ºå·¥ä½œç°¿å¯¹è±¡
+    libxl::Book* account_book = xlCreateBook();  //´´½¨¹¤×÷²¾¶ÔÏó
 
     if (!account_book)
     {
-        std::cerr << "ERROR:å·¥ä½œç°¿ç¼“å­˜åˆ›å»ºå¤±è´¥" << std::endl;
+        std::cerr << "ERROR:¹¤×÷²¾»º´æ´´½¨Ê§°Ü" << std::endl;
         exit(1);
     }
 
     if (!account_book->load(L"account.xlsx"))
     {
-        std::cout << "æœªæ£€æµ‹åˆ°å·¥ä½œç°¿,æ­£åœ¨åˆ›å»º---" << std::endl;
+        std::cout << "Î´¼ì²âµ½¹¤×÷²¾,ÕıÔÚ´´½¨---" << std::endl;
 
         libxl::Sheet* temp_sheet = account_book->addSheet(L"sheet_1");
         temp_sheet->writeStr(1, 1, L"name:");
@@ -300,20 +301,20 @@ bool Login::load_account(void)
         temp_sheet->writeStr(2, 2, L"root");
 
         account_book->save(L"account.xlsx");
-       
+
         if (!account_book->load(L"account.xlsx"))
         {
-            std::cerr << "ERROR:å·¥ä½œç°¿è½½å…¥å¤±è´¥" << std::endl;
+            std::cerr << "ERROR:¹¤×÷²¾ÔØÈëÊ§°Ü" << std::endl;
             std::cerr << account_book->errorMessage();
             exit(1);
         }
     }
 
-    libxl::Sheet* account_sheet = account_book->getSheet(0); //è·å–sheet1
+    libxl::Sheet* account_sheet = account_book->getSheet(0); //»ñÈ¡sheet1
 
     if (!account_sheet)
     {
-        std::cerr << "ERROR:å·¥ä½œè¡¨è½½å…¥å¤±è´¥" << std::endl;
+        std::cerr << "ERROR:¹¤×÷±íÔØÈëÊ§°Ü" << std::endl;
         exit(1);
     }
 
@@ -322,12 +323,12 @@ bool Login::load_account(void)
     last_col = account_sheet->lastCol();
     last_row = account_sheet->lastRow();
 
-    last_col--; //æœ€åä¸€åˆ—æ²¡æ•°æ®
-    last_row--; //æœ€åä¸€è¡Œæ²¡æ•°æ®
+    last_col--; //×îºóÒ»ÁĞÃ»Êı¾İ
+    last_row--; //×îºóÒ»ĞĞÃ»Êı¾İ
 
     if ((first_col == last_col) || (first_row == last_row))
     {
-        std::cerr << "ERROR:å·¥ä½œè¡¨æ— æ•°æ®!" << std::endl;
+        std::cerr << "ERROR:¹¤×÷±íÎŞÊı¾İ!" << std::endl;
         exit(1);
     }
 
@@ -337,7 +338,7 @@ bool Login::load_account(void)
         buffer = account_sheet->readStr(first_row, first_col);
         if (buffer.find(L"name") == -1)
         {
-            std::cerr << "ERROR:å·¥ä½œè¡¨æ— nameæ•°æ®!" << std::endl;
+            std::cerr << "ERROR:¹¤×÷±íÎŞnameÊı¾İ!" << std::endl;
             exit(1);
         }
     }
@@ -346,7 +347,7 @@ bool Login::load_account(void)
         buffer = account_sheet->readStr(first_row, last_col);
         if (buffer.find(L"password") == -1)
         {
-            std::cerr << "ERROR:å·¥ä½œè¡¨æ— passwordæ•°æ®!" << std::endl;
+            std::cerr << "ERROR:¹¤×÷±íÎŞpasswordÊı¾İ!" << std::endl;
             exit(1);
         }
     }
@@ -362,7 +363,7 @@ bool Login::load_log(void)
 
     if (clog)
     {
-        clog->open("log.txt",std::ios::out|std::ios::app);
+        clog->open("log.txt", std::ios::out | std::ios::app);
         return true;
     }
 
@@ -377,115 +378,115 @@ void test_libxl(void)
 
     libxl::Book* test_book = xlCreateBook();
     std::wcout << "p = " << test_book << std::endl;
-    
+
     //if (test_book->setLocale("UTF-8"))
     //{
-    //    std::cout << "ç¼–ç æ ¼å¼ä¿®æ”¹æˆåŠŸ!" << std::endl;
+    //    std::cout << "±àÂë¸ñÊ½ĞŞ¸Ä³É¹¦!" << std::endl;
     //}
     //else {
-    //    std::cout << "ç¼–ç æ ¼å¼ä¿®æ”¹å¤±è´¥!" << std::endl;
+    //    std::cout << "±àÂë¸ñÊ½ĞŞ¸ÄÊ§°Ü!" << std::endl;
     //    exit(1);
     //}
 
 
-    if (test_book->load(L"C:\\Users\\likes\\Desktop\\æµ‹è¯•æ–‡ä»¶.xlsx"))
+    if (test_book->load(L"C:\\Users\\likes\\Desktop\\²âÊÔÎÄ¼ş.xlsx"))
     {
-        std::cout << "æµ‹è¯•æ–‡ä»¶è½½å…¥æˆåŠŸ!" << std::endl;
+        std::cout << "²âÊÔÎÄ¼şÔØÈë³É¹¦!" << std::endl;
     }
     else {
-        std::cout << "æ–‡ä»¶è½½å…¥å¤±è´¥ï¼Œå°†è‡ªåŠ¨åˆ›å»º" << std::endl;
+        std::cout << "ÎÄ¼şÔØÈëÊ§°Ü£¬½«×Ô¶¯´´½¨" << std::endl;
     }
 
-    //libxl::Sheet* sheet_1 = test_book->addSheet(L"æµ‹è¯•1");
-    //std::cout << "è¡¨æ ¼æ•°é‡: " << test_book->sheetCount() << std::endl;
+    //libxl::Sheet* sheet_1 = test_book->addSheet(L"²âÊÔ1");
+    //std::cout << "±í¸ñÊıÁ¿: " << test_book->sheetCount() << std::endl;
 
-    //libxl::Sheet* sheet_2 = test_book->addSheet(L"æµ‹è¯•2");
-    //std::cout << "è¡¨æ ¼æ•°é‡: " << test_book->sheetCount() << std::endl;
+    //libxl::Sheet* sheet_2 = test_book->addSheet(L"²âÊÔ2");
+    //std::cout << "±í¸ñÊıÁ¿: " << test_book->sheetCount() << std::endl;
 
-    //libxl::Sheet* sheet_3 = test_book->addSheet(L"æµ‹è¯•3");
-    //std::cout << "è¡¨æ ¼æ•°é‡: " << test_book->sheetCount() << std::endl;
+    //libxl::Sheet* sheet_3 = test_book->addSheet(L"²âÊÔ3");
+    //std::cout << "±í¸ñÊıÁ¿: " << test_book->sheetCount() << std::endl;
 
-    //test_book->delSheet(1);     //åˆ é™¤ç¬¬äºŒä¸ª
-    //std::cout << "è¡¨æ ¼æ•°é‡: " << test_book->sheetCount() << std::endl;
+    //test_book->delSheet(1);     //É¾³ıµÚ¶ş¸ö
+    //std::cout << "±í¸ñÊıÁ¿: " << test_book->sheetCount() << std::endl;
 
     libxl::Sheet* test_sheet = NULL;
 
     if (!(test_book->sheetCount()))
     {
-        std::cout << "æœªæ£€æµ‹åˆ°sheet,å°†è‡ªåŠ¨åˆ›å»º!" << std::endl;
-        test_sheet = test_book->insertSheet(0, L"æµ‹è¯•æ’å…¥");
+        std::cout << "Î´¼ì²âµ½sheet,½«×Ô¶¯´´½¨!" << std::endl;
+        test_sheet = test_book->insertSheet(0, L"²âÊÔ²åÈë");
         if (test_sheet)
         {
-            std::cout << "sheet åˆ›å»ºæˆåŠŸ!" << std::endl;
+            std::cout << "sheet ´´½¨³É¹¦!" << std::endl;
         }
         else {
-            std::cout << "sheet åˆ›å»ºå¤±è´¥!" << std::endl;
+            std::cout << "sheet ´´½¨Ê§°Ü!" << std::endl;
             exit(1);
         }
     }
     else {
-        std::cout << "æ£€æµ‹åˆ°sheetä¸ªæ•°ä¸º: " << test_book->sheetCount() << " å°†è‡ªåŠ¨è¯»å–ç¬¬ä¸€ä¸ªsheet!" << std::endl;
+        std::cout << "¼ì²âµ½sheet¸öÊıÎª: " << test_book->sheetCount() << " ½«×Ô¶¯¶ÁÈ¡µÚÒ»¸ösheet!" << std::endl;
         test_sheet = test_book->getSheet(0);
         if (!test_sheet)
         {
-            std::cout << "è¯»å–ç¬¬ä¸€ä¸ªsheetå¤±è´¥!" << std::endl;
+            std::cout << "¶ÁÈ¡µÚÒ»¸ösheetÊ§°Ü!" << std::endl;
             exit(1);
         }
         else {
-            std::cout << "è¯»å–ç¬¬ä¸€ä¸ªsheetæˆåŠŸ!" << std::endl;
+            std::cout << "¶ÁÈ¡µÚÒ»¸ösheet³É¹¦!" << std::endl;
         }
     }
 
     std::wstring buffer;
-    
+
     int row = 0, col = 0;
     libxl::CellType temp_cell_type = test_sheet->cellType(row, col);
     if (temp_cell_type == libxl::CELLTYPE_EMPTY)
     {
-        std::cout << "(" << row << "," << col << ")" 
-            << "æ— å†…å®¹,å°è¯•å¡«å……"
+        std::cout << "(" << row << "," << col << ")"
+            << "ÎŞÄÚÈİ,³¢ÊÔÌî³ä"
             << std::endl;
         if (test_sheet->writeNum(row, col, 1112))
         {
-            std::cout << "å†…å®¹å¡«å……æˆåŠŸ" << std::endl;
+            std::cout << "ÄÚÈİÌî³ä³É¹¦" << std::endl;
         }
         else {
-            std::cout << "å†…å®¹å¡«å……å¤±è´¥!" << std::endl;
+            std::cout << "ÄÚÈİÌî³äÊ§°Ü!" << std::endl;
             exit(2);
         }
 
     }
     else {
-       
-        std::cout << "å­˜åœ¨å†…å®¹,å‡†å¤‡è¯»å–:" << std::endl;
+
+        std::cout << "´æÔÚÄÚÈİ,×¼±¸¶ÁÈ¡:" << std::endl;
         switch (temp_cell_type)
         {
         case libxl::CELLTYPE_EMPTY:
             break;
         case libxl::CELLTYPE_NUMBER:
-            std::cout << "æ•°å­—ç±»å‹,å…·ä½“å€¼ä¸º:" << test_sheet->readNum(row, col) << std::endl;
+            std::cout << "Êı×ÖÀàĞÍ,¾ßÌåÖµÎª:" << test_sheet->readNum(row, col) << std::endl;
             break;
         case libxl::CELLTYPE_STRING:
-             ;
-             std::cout << "å­—ç¬¦ç±»å‹,å…·ä½“å€¼ä¸º:"; 
-             std::wcout << (test_sheet->readStr(row, col)) << std::endl;
+            ;
+            std::cout << "×Ö·ûÀàĞÍ,¾ßÌåÖµÎª:";
+            std::wcout << (test_sheet->readStr(row, col)) << std::endl;
 
-             buffer = (test_sheet->readStr(row, col));
-             if (buffer == L"æ±‰å­—" )
-             {
-                 std::cout << "å­—ç¬¦ä¸²å¯¹æ¯”,æµ‹è¯•æˆåŠŸ!";
-                 test_sheet->writeStr(row, col, L"æµ‹è¯•æˆåŠŸ!");
-             }
+            buffer = (test_sheet->readStr(row, col));
+            if (buffer == L"ºº×Ö")
+            {
+                std::cout << "×Ö·û´®¶Ô±È,²âÊÔ³É¹¦!";
+                test_sheet->writeStr(row, col, L"²âÊÔ³É¹¦!");
+            }
             break;
         case libxl::CELLTYPE_BOOLEAN:
             libxl::Format* temp_format;
-            std::cout << "å¸ƒå°”ç±»å‹,å…·ä½“å€¼ä¸º:" << test_sheet->readBool(row, col) << std::endl;
+            std::cout << "²¼¶ûÀàĞÍ,¾ßÌåÖµÎª:" << test_sheet->readBool(row, col) << std::endl;
             break;
         case libxl::CELLTYPE_BLANK:
-            std::cout << "ç©ºæ ¼ç±»å‹,å…·ä½“å€¼ä¸º:" << test_sheet->readBlank(row, col, &temp_format) << std::endl;
+            std::cout << "¿Õ¸ñÀàĞÍ,¾ßÌåÖµÎª:" << test_sheet->readBlank(row, col, &temp_format) << std::endl;
             break;
         case libxl::CELLTYPE_ERROR:
-            std::cout << "è¯»å–é”™è¯¯!é”™è¯¯ä¿¡æ¯:" << test_sheet->readError(row, col) <<  std::endl;
+            std::cout << "¶ÁÈ¡´íÎó!´íÎóĞÅÏ¢:" << test_sheet->readError(row, col) << std::endl;
             exit(3);
             break;
         default:
@@ -494,7 +495,7 @@ void test_libxl(void)
     }
 
 
-    test_book->save(L"C:\\Users\\likes\\Desktop\\æµ‹è¯•æ–‡ä»¶.xlsx");
+    test_book->save(L"C:\\Users\\likes\\Desktop\\²âÊÔÎÄ¼ş.xlsx");
 
     test_book->release();
 
